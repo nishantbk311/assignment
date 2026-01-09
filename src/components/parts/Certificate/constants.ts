@@ -41,4 +41,15 @@ export const DEMO_INTERNS: Intern[] = [
     endingDate: "",
     linkedin: "https://www.linkedin.com/in/nishant-bk/",
   },
+  {
+    id: "LC-2026-005",
+    name: "Reshmi Rajchal",
+    email: "reshmi@example.com",
+    photo:
+      "https://media.licdn.com/dms/image/v2/D4D03AQHSkya0ezQUzA/profile-displayphoto-crop_800_800/B4DZhKS7jIGsAQ-/0/1753593137745?e=1769644800&v=beta&t=JqJjznt6-neohLh6V1_e8ARd-grhaQ3E9nMoO75LNJo",
+    post: "UI/UX Intern",
+    joiningDate: "Jan 06, 2026",
+    endingDate: "",
+    linkedin: "https://www.linkedin.com/in/reshmi-rajchal/",
+  },
 ];

@@ -153,7 +153,7 @@ export const JobList: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-2 text-card-foreground font-bold col-span-2">
                     <DollarSign size={18} className="text-primary" />
-                    <span className="text-lg">{job.salary}</span>
+                    <span className="text-lg text-primary">{job.salary}</span>
                   </div>
                 </div>
 

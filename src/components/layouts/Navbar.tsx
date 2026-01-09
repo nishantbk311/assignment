@@ -23,6 +23,7 @@ const others = [
   { name: "Verify Certificate", href: "/others/verify-certificate" },
   { name: "Our Projects", href: "/others/our-projects" },
 ];
+
 const services = [
   { name: "All Services", href: "/services/blog" },
   { name: "Web Development", href: "/services/verify-certificate" },
@@ -43,6 +44,7 @@ const navLinks = [
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isDark, setIsDark] = useState(false);
   const location = useLocation();
 
@@ -51,13 +53,13 @@ export function Navbar() {
     document.documentElement.classList.toggle("dark");
   };
 
-  const isActive = (href: string) => {
-    if (href === "/") return location.pathname === "/";
-    return location.pathname.startsWith(href);
-  };
+  const isActive = (href: string) =>
+    href === "/"
+      ? location.pathname === "/"
+      : location.pathname.startsWith(href);
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-border/50 bg-card backdrop-blur-lg ">
+    <nav className="sticky top-0 z-50 w-full border-b border-border/50 bg-card backdrop-blur-lg">
       <div className="container-custom">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
@@ -65,7 +67,7 @@ export function Navbar() {
             <img src="/logo.png" alt="Leafclutch Logo" className="h-14" />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* -------- Desktop Navigation -------- */}
           <div className="hidden items-center gap-4 lg:flex">
             {navLinks.map((link) =>
               link.dropdown ? (
@@ -81,19 +83,9 @@ export function Navbar() {
                     </button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="center" className="w-56 bg-card">
-                    {/* <DropdownMenuItem asChild>
-                      <Link
-                        to={link.href}
-                        className="cursor-pointer font-medium"
-                      >
-                        All {link.name}
-                      </Link>
-                    </DropdownMenuItem> */}
                     {link.dropdown.map((item) => (
                       <DropdownMenuItem key={item.name} asChild>
-                        <Link to={item.href} className="cursor-pointer">
-                          {item.name}
-                        </Link>
+                        <Link to={item.href}>{item.name}</Link>
                       </DropdownMenuItem>
                     ))}
                   </DropdownMenuContent>
@@ -112,13 +104,13 @@ export function Navbar() {
             )}
           </div>
 
-          {/* Right Section */}
+          {/* Right section */}
           <div className="flex items-center gap-4">
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
-              className="hidden sm:flex"
+              className="pt-0.5 sm:flex"
             >
               <AnimatePresence mode="wait" initial={false}>
                 {isDark ? (
@@ -144,96 +136,100 @@ export function Navbar() {
                 )}
               </AnimatePresence>
             </Button>
-            {/* <div className="p-10">
-              <LuCircleUserRound size={40} className="text-red-500" />
-            </div> */}
-            <div className="hidden items-center gap-2 sm:flex">
+            <div className="hidden sm:flex">
               <Button asChild>
                 <Link to="/login">
                   <LuCircleUserRound className="!w-6 !h-6" /> Login
                 </Link>
               </Button>
-              {/* <Button asChild>
-                <Link to="/register">Apply Now</Link>
-              </Button> */}
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile toggle */}
             <Button
               variant="ghost"
               size="icon"
               className="lg:hidden"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              onClick={() => setMobileMenuOpen((open) => !open)}
             >
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              <Menu className="!h-6 !w-6" />
             </Button>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
+      {/* ---------------- MOBILE MENU ---------------- */}
+      <AnimatePresence>
         {mobileMenuOpen && (
-          <div className="animate-fade-in border-t border-border py-4 lg:hidden">
-            <div className="flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <div key={link.name}>
-                  <Link
-                    to={link.href}
-                    className={`block rounded-md px-3 py-2 text-base font-medium ${
-                      isActive(link.href)
-                        ? "bg-secondary text-primary"
-                        : "text-foreground hover:bg-muted"
-                    }`}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
-                  {link.dropdown && (
-                    <div className="ml-4 mt-1 flex flex-col gap-1">
-                      {link.dropdown.map((item) => (
-                        <Link
-                          key={item.name}
-                          to={item.href}
-                          className="block rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
+          <motion.div
+            className="lg:hidden fixed top-20 inset-x-0 bottom-0 z-50 bg-white border-t"
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -20, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            {/* Scrollable container */}
+            <div className="h-auto border-b overflow-y-auto bg-card overscroll-contain px-4 py-4">
+              <div className="flex flex-col gap-2">
+                {navLinks.map((link) => {
+                  const open = openDropdown === link.name;
 
-              <div className="mt-4 flex flex-col gap-2 border-t border-border pt-4">
-                <div className="flex items-center justify-between px-3">
-                  <span className="text-sm font-medium">Theme</span>
-                  <Button variant="ghost" size="icon" onClick={toggleTheme}>
-                    {isDark ? (
-                      <Sun className="h-5 w-5" />
-                    ) : (
-                      <Moon className="h-5 w-5" />
-                    )}
+                  return (
+                    <div key={link.name}>
+                      {/* Main link */}
+                      <button
+                        className="flex w-full items-center justify-between rounded-md px-3 py-2 text-base font-medium active:scale-[0.98]"
+                        onClick={() =>
+                          link.dropdown
+                            ? setOpenDropdown(open ? null : link.name)
+                            : setMobileMenuOpen(false)
+                        }
+                      >
+                        <span>{link.name}</span>
+                        {link.dropdown && (
+                          <ChevronDown
+                            className={`h-4 w-4 transition-transform ${
+                              open ? "rotate-180" : ""
+                            }`}
+                          />
+                        )}
+                      </button>
+
+                      {/* Dropdown links */}
+                      {link.dropdown && open && (
+                        <div className="ml-4 mt-1 flex flex-col gap-1 border-l pl-3">
+                          {link.dropdown.map((item) => (
+                            <Link
+                              key={item.name}
+                              to={item.href}
+                              className="rounded-md px-3 py-2 text-sm text-muted-foreground active:bg-muted"
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+
+                {/* Footer */}
+                <div className="mt-4 border-t pt-4 flex flex-col gap-3">
+                  {/* <Button size="icon" onClick={toggleTheme} className="mx-auto">
+                    {isDark ? <Sun /> : <Moon />}
+                  </Button> */}
+
+                  <Button asChild>
+                    <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
+                      <LuCircleUserRound className="!w-5 !h-5" /> Login
+                    </Link>
                   </Button>
                 </div>
-                <Button variant="outline" asChild className="mx-3">
-                  <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
-                    Login
-                  </Link>
-                </Button>
-                <Button asChild className="mx-3">
-                  <Link to="/register" onClick={() => setMobileMenuOpen(false)}>
-                    Apply Now
-                  </Link>
-                </Button>
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
-      </div>
+      </AnimatePresence>
     </nav>
   );
 }

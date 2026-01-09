@@ -46,7 +46,7 @@ const socials = [
 export function Footer() {
   return (
     <footer className="border-t border-border bg-card">
-      <div className="container-custom py-16 md:pb-10">
+      <div className="container-custom py-16 md:pb-10  ">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">

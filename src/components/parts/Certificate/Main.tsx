@@ -68,7 +68,7 @@ const App: React.FC = () => {
       className="min-h-screen flex flex-col items-center transition-colors duration-300"
       style={heroBackground}
     >
-      <main className="bg-white md:rounded-2xl dark:bg-background md:m-40 md:mt-20 md:mb-20 opacity-[1] flex flex-col items-center py-12 px-4 sm:py-20">
+      <main className="bg-white md:rounded-2xl dark:bg-background sm:m-[3rem] sm:mt-20 sm:mb-20 opacity-[1] flex flex-col items-center py-12 px-4 sm:py-20">
         <div className="w-full max-w-3xl text-center space-y-6">
           <motion.div
             className="space-y-2"
