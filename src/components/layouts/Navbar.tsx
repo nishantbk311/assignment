@@ -5,12 +5,7 @@ import { LuCircleUserRound } from "react-icons/lu";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../ui/button";
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+
 
 const careers = [
   { name: "Jobs", href: "/careers/jobs" },
@@ -46,6 +41,7 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isDark, setIsDark] = useState(false);
+
   const location = useLocation();
 
   const toggleTheme = () => {
@@ -68,28 +64,47 @@ export function Navbar() {
           </Link>
 
           {/* -------- Desktop Navigation -------- */}
-          <div className="hidden items-center gap-4 lg:flex">
+          <div className="hidden lg:flex items-center gap-4">
             {navLinks.map((link) =>
               link.dropdown ? (
-                <DropdownMenu key={link.name}>
-                  <DropdownMenuTrigger asChild>
-                    <button
-                      className={`nav-link flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium ${
-                        isActive(link.href) ? "text-primary" : ""
+                <div
+                  key={link.name}
+                  className="relative"
+                  onMouseEnter={() => setOpenDropdown(link.name)}
+                  onMouseLeave={() => setOpenDropdown(null)}
+                >
+                  {/* Main button */}
+                  <button
+                    className={`nav-link flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium ${
+                      location.pathname.startsWith(link.href)
+                        ? "text-primary"
+                        : ""
+                    }`}
+                  >
+                    {link.name}
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform duration-200 ${
+                        openDropdown === link.name ? "rotate-180" : ""
                       }`}
-                    >
-                      {link.name}
-                      <ChevronDown className="h-4 w-4" />
-                    </button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="center" className="w-56 bg-card">
-                    {link.dropdown.map((item) => (
-                      <DropdownMenuItem key={item.name} asChild>
-                        <Link to={item.href}>{item.name}</Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
+                    />
+                  </button>
+
+                  {/* Dropdown menu */}
+                  {openDropdown === link.name && (
+                    <div className="absolute left-0 w-56 bg-card rounded-md shadow-lg z-10">
+                      {link.dropdown.map((item) => (
+                        <Link
+                          key={item.name}
+                          to={item.href}
+                          className="block px-4 py-2 text-sm text-muted-foreground hover:bg-muted rounded-md transition-colors duration-150"
+                          onClick={() => setOpenDropdown(null)} // close dropdown on click
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ) : (
                 <Link
                   key={link.name}
@@ -151,7 +166,29 @@ export function Navbar() {
               className="lg:hidden"
               onClick={() => setMobileMenuOpen((open) => !open)}
             >
-              <Menu className="!h-6 !w-6" />
+              <AnimatePresence mode="wait" initial={false}>
+                {!mobileMenuOpen ? (
+                  <motion.div
+                    key="menu"
+                    initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    <Menu className="!h-6 !w-6" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="close"
+                    initial={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    <X className="!h-6 !w-6" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </Button>
           </div>
         </div>
