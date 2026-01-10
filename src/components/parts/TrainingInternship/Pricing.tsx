@@ -1,6 +1,6 @@
 import React from "react";
 import type { PricingCategory } from "./types";
-import { Check, Tag, CalendarDays, Sparkles, ShieldCheck } from "lucide-react";
+import { Check, Tag, CalendarDays } from "lucide-react";
 
 interface PricingSectionProps {
   categories: PricingCategory[];
