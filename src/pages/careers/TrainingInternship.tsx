@@ -3,7 +3,7 @@ import Features from "../../components/parts/Services/Features";
 import Hero from "../../components/parts/Services/Hero";
 import { service } from "../../components/parts/TrainingInternship/data";
 import FinalCTA from "../../components/parts/TrainingInternship/FinalCTA";
-import PricingSection from "../../components/parts/TrainingInternship/Pricing";
+import PricingSection from "../../components/parts/TrainingInternship/PricingSection";
 import ProgramStructure from "../../components/parts/TrainingInternship/ProgramStructure";
 
 export default function TrainingInternship() {
