@@ -1,5 +1,5 @@
 import React from "react";
-import { UserPlus, ArrowRight } from "lucide-react";
+import { UserPlus } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const Hero: React.FC = () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, easeInOut } from "framer-motion";
 import { ArrowRight, Sparkles, Shield, Zap, Target } from "lucide-react";
 import DashboardMockup from "./DashboardMockup";
 
@@ -20,7 +20,10 @@ const Hero: React.FC = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: {
+        duration: 0.5,
+        ease: easeInOut,
+      },
     },
   };
 
