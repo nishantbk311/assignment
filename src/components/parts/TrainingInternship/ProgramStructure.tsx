@@ -32,7 +32,7 @@ const ProgramStructure: React.FC<ProgramStructureProps> = ({ phases }) => {
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-mint/10 rounded-full mb-3">
                 {/* <Zap className="w-3 h-3 text-mint" /> */}
                 <span className="px-4 py-1.5 bg-mint/10 dark:bg-mint/5 text-mint text-xs font-bold uppercase tracking-widest rounded-full border border-mint/20">
-                  The Career Journey
+                  3 months journey
                 </span>
               </div>
               <h3 className="text-2xl font-black text-primary dark:text-white mb-4 transition-colors">
