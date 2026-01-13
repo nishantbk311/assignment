@@ -6,7 +6,7 @@ interface GifsProps {
   className?: string;
 }
 
-export default function Gifs({ src, alt = "", className }: GifsProps) {
+export default function Gifs({ src, className }: GifsProps) {
   return (
     <div className={`relative w-full overflow-hidden ${className}`}>
       {/* <img
