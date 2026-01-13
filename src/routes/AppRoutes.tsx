@@ -12,6 +12,8 @@ import AllServices from "../pages/Services/AllServices";
 import Services from "../pages/Services/Services";
 import { ScrollToTop } from "./ScrollToTop";
 import TrainingInternship from "../pages/careers/TrainingInternship";
+import AboutUs from "../pages/AboutUs";
+import ContactUs from "../pages/ContactUs";
 
 export default function AppRoutes() {
   return (
@@ -20,9 +22,11 @@ export default function AppRoutes() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/others/contact" element={<ContactUs />} />
+          <Route path="/training" element={<TrainingInternship />} />
           <Route path="/careers/jobs" element={<Job />} />
           <Route path="/careers/internships" element={<Internship />} />
-          <Route path="/careers/training" element={<TrainingInternship />} />
           <Route path="/others/blog" element={<Blog />} />
           <Route
             path="/others/verify-certificate"

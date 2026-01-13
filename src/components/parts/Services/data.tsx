@@ -18,8 +18,6 @@ export const services: ServiceMap = {
   "web-development": {
     title: "Web Development",
     subtitle: "Build modern, scalable web applications",
-    description:
-      "We create custom websites and web applications that are fast, secure, and user-friendly. Our team specializes in modern frameworks and follows best practices for SEO, accessibility, and performance.",
     icon: <Globe className="w-10 h-10 text-mint" />,
     heroImage:
       "https://images.unsplash.com/photo-1621839673705-6617adf9e890?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -71,8 +69,6 @@ export const services: ServiceMap = {
   "mobile-development": {
     title: "Mobile App Development",
     subtitle: "Native and cross-platform mobile solutions",
-    description:
-      "We build mobile applications that provide exceptional user experiences on iOS and Android. From concept to app store, we handle every aspect of mobile development.",
     icon: <Smartphone className="w-10 h-10 text-mint" />,
     heroImage:
       "https://plus.unsplash.com/premium_photo-1661326248013-3107a4b2bd91?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -118,8 +114,6 @@ export const services: ServiceMap = {
   devops: {
     title: "DevOps Solutions",
     subtitle: "Streamline your development pipeline",
-    description:
-      "Accelerate your software delivery with our DevOps services. We implement CI/CD pipelines, automate infrastructure, and optimize your development workflow for maximum efficiency.",
     icon: <Server className="w-10 h-10 text-mint" />,
     heroImage: "https://devopedia.org/images/article/54/7602.1513404277.png",
     backgroundSize: "contain",
@@ -165,8 +159,6 @@ export const services: ServiceMap = {
   cybersecurity: {
     title: "Cybersecurity",
     subtitle: "Protect your digital assets",
-    description:
-      "Safeguard your business with comprehensive cybersecurity solutions. We identify vulnerabilities, implement protection measures, and ensure compliance with industry standards.",
     icon: <Shield className="w-10 h-10 text-mint" />,
     heroImage:
       "https://cdn.builtin.com/cdn-cgi/image/f=auto,fit=cover,w=1200,h=635,q=80/sites/www.builtin.com/files/2024-10/cybersecurity.png",
@@ -205,8 +197,6 @@ export const services: ServiceMap = {
   "data-science": {
     title: "Data Science & AI",
     subtitle: "Transform data into insights",
-    description:
-      "Leverage the power of data science and artificial intelligence to make smarter business decisions. We build custom ML models, analytics dashboards, and AI-powered solutions.",
     icon: <Brain className="w-10 h-10 text-mint" />,
     heroImage:
       "https://tech.kipmi.or.id/wp-content/uploads/2021/11/data-science.jpeg",
@@ -252,8 +242,6 @@ export const services: ServiceMap = {
   "digital-marketing": {
     title: "Digital Marketing",
     subtitle: "Grow your online presence",
-    description:
-      "Reach your target audience with strategic digital marketing campaigns. We combine data-driven strategies with creative content to maximize your ROI.",
     icon: <Megaphone className="w-10 h-10 text-mint" />,
     heroImage:
       "https://jenime.com/wp-content/uploads/2025/01/Top-Digital-Marketing-Company.png",

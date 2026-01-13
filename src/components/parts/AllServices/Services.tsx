@@ -14,14 +14,14 @@ const ServiceCard: React.FC<{
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none hover:shadow-2xl hover:-translate-y-1 transition-all group overflow-hidden"
+      className="relative p-4 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none hover:shadow-2xl hover:-translate-y-1 transition-all group overflow-hidden"
     >
       {/* Top Right Decorative Shape */}
       <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2F4F7] dark:bg-slate-800/50 rounded-bl-full -z-0 opacity-50 transition-colors" />
 
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col items-center">
         {/* Icon Container */}
-        <div className="w-14 h-14 bg-blue-50 dark:bg-slate-800 rounded-xl flex items-center justify-center text-primary dark:text-mint mb-8 border border-blue-100/50 dark:border-slate-700">
+        <div className="w-1/2 h-[12rem] bg-blue-50 dark:bg-slate-800 rounded-xl flex items-center justify-center text-primary dark:text-mint mb-4 border border-blue-100/50 dark:border-slate-700">
           {service.icon}
         </div>
 
@@ -31,7 +31,7 @@ const ServiceCard: React.FC<{
         </h3>
 
         {/* Description */}
-        <p className="text-slate-500 dark:text-slate-400 mb-8 leading-relaxed text-base font-normal max-w-[90%]">
+        <p className="text-slate-500 dark:text-slate-400 mb-8 text-center leading-relaxed text-base font-normal max-w-[90%]">
           {service.description}
         </p>
 
@@ -52,7 +52,7 @@ const ServiceCard: React.FC<{
 
         {/* Learn More Action Box */}
         <Link to={service.href}>
-          <button className="w-full flex items-center justify-between p-4 px-6 rounded-xl border border-mint/40 dark:border-mint/20 hover:bg-mint/5 dark:hover:bg-mint/10 transition-all group/btn">
+          <button className="w-full flex items-center justify-between p-4 px-6 rounded-xl border border-mint/40 dark:border-mint/20 hover:bg-primary/10 dark:hover:bg-mint/10 transition-all group/btn">
             <span className="text-lg font-bold text-[#14b8a6] dark:text-mint">
               Learn More
             </span>
@@ -71,7 +71,10 @@ const ServiceCard: React.FC<{
 
 const Services: React.FC = () => {
   return (
-    <section id="services" className="py-24 bg-[#f8fafc] dark:bg-slate-950">
+    <section
+      id="services"
+      className="py-24 bg-[#f8fafc] dark:bg-slate-950 border-b"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.div
@@ -86,7 +89,7 @@ const Services: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-slate-900 dark:text-white"
+            className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-primary dark:text-white"
           >
             Available Services
           </motion.h2>

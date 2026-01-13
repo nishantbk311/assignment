@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import type { PricingCategory } from "./types";
 import { Check, Tag, CalendarDays } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 interface PricingSectionProps {
   categories: PricingCategory[];
 }
 
 const PricingSection: React.FC<PricingSectionProps> = ({ categories }) => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!location.hash) return;
+
+    const id = location.hash.slice(1);
+
+    const timeout = setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        // How many pixels above the element you want to stop
+        const offset = 100; // adjust based on your fixed header height
+
+        const y = element.getBoundingClientRect().top + window.scrollY - offset;
+
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }, 50); // wait for DOM
+
+    return () => clearTimeout(timeout);
+  }, [location.hash]);
+
   return (
     <section className="py-24 bg-gray-50 dark:bg-gray-900">
       <div className="container-custom">
@@ -30,6 +53,11 @@ const PricingSection: React.FC<PricingSectionProps> = ({ categories }) => {
           {categories.map((cat, idx) => (
             <div
               key={idx}
+              id={cat.name
+                .toLowerCase()
+                .replace(/&/g, "and")
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/(^-|-$)/g, "")}
               className="group relative flex flex-col bg-card border border-gray-100 dark:border-gray-800 rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 overflow-hidden h-full"
             >
               {/* Decorative background accent */}
@@ -64,7 +92,15 @@ const PricingSection: React.FC<PricingSectionProps> = ({ categories }) => {
 
                 <div className="flex-1 flex flex-col pt-8 sm:pt-0 sm:pl-8">
                   <p className="text-xs font-black text-gray-400 uppercase tracking-[0.2em] mb-6">
-                    Courses Included
+                    {cat.includeAll ? (
+                      "All included"
+                    ) : (
+                      <>
+                        Choose any{" "}
+                        <span className="font-extrabold text-primary">one</span>{" "}
+                        from listed courses
+                      </>
+                    )}
                   </p>
                   <div className="grid grid-cols-1 gap-y-4">
                     {cat.courses.map((course, cIdx) => (
@@ -85,9 +121,15 @@ const PricingSection: React.FC<PricingSectionProps> = ({ categories }) => {
               </div>
 
               {/* Full Width Button */}
-              <button className="w-full py-5 bg-primary dark:bg-white text-white dark:text-primary font-black text-lg rounded-2xl group-hover:bg-mint group-hover:text-primary transition-all shadow-lg active:scale-[0.98]">
-                Enroll Now
-              </button>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSehIqCJm6ITkjUJcu9djYG4H60Uku61Z4Wlg_naCjTLUTjqlQ/viewform?usp=sharing&ouid=102811312275506082295"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="w-full py-5 bg-primary text-white dark:text-white font-black text-lg rounded-2xl hover:bg-mint hover:text-primary transition-all shadow-lg active:scale-[0.98]">
+                  Enroll Now
+                </button>
+              </a>
             </div>
           ))}
         </div>

@@ -12,7 +12,6 @@ export default function TrainingInternship() {
       <Hero
         title={service.title}
         subtitle={service.subtitle}
-        description={service.description}
         icon={service.icon}
         backgroundImage={service.heroImage}
         backgroundSize={service?.backgroundSize}

@@ -9,7 +9,6 @@ export interface Benefit {
 export interface ServiceData {
   title: string;
   subtitle: string;
-  description: string;
   icon: React.ReactNode;
   heroImage: string;
   backgroundSize?: "cover" | "contain" | "auto" | string; // allow custom size

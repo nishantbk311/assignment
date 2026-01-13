@@ -25,13 +25,20 @@ const CTA: React.FC = () => {
               Let's discuss your requirements and create a solution that drives
               results. Our experts are ready to help you scale.
             </p>
-            <button className="px-10 py-5 bg-white text-primary font-bold rounded-full hover:bg-mint hover:text-primary transition-all flex items-center gap-2 group mx-auto text-lg shadow-2xl">
-              Get a Free Consultation
-              <ArrowRight
-                size={22}
-                className="group-hover:translate-x-1 transition-transform"
-              />
-            </button>
+            <a
+              href="https://wa.me/9766722920?text=I%20want%20consultation%20about%20one%20of%20your%20services"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block cursor-pointer"
+            >
+              <button className="px-10 py-5 bg-white text-primary font-bold rounded-full hover:bg-mint hover:text-primary transition-all flex items-center gap-2 group mx-auto text-lg shadow-2xl">
+                Get a Free Consultation
+                <ArrowRight
+                  size={22}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
+              </button>
+            </a>
           </div>
         </motion.div>
       </div>

@@ -17,6 +17,7 @@ export interface PricingCategory {
   totalFee: string;
   enrollmentFee: string;
   courses: string[];
+  includeAll?: boolean;
 }
 
 export interface ServiceData {

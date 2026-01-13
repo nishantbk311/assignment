@@ -107,6 +107,7 @@ export const service = {
         "100 Days Challenge",
         "Interview Prep",
       ],
+      includeAll: true,
     },
     {
       name: "Programming Languages",

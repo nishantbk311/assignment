@@ -4,7 +4,7 @@ import { FaWhatsapp } from "react-icons/fa";
 
 const FinalCTA: React.FC = () => {
   return (
-    <section className="py-24 bg-primary dark:bg-gray-900 relative overflow-hidden">
+    <section className="py-24 bg-primary dark:bg-gray-900 relative overflow-hidden border-t">
       {/* Decorative shapes */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-mint/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl pointer-events-none" />
@@ -46,10 +46,10 @@ const FinalCTA: React.FC = () => {
               <Phone className="w-4 h-4" />
             </div>
             <div className="overflow-hidden flex flex-col">
-              <h3 className="text-xs font-black text-white/40 uppercase tracking-widest mb-0.5 truncate">
+              <h3 className="text-xs font-black text-white uppercase tracking-widest mb-0.5 truncate">
                 Siddhartha Pathak
               </h3>
-              <p className="text-white font-black text-sm tracking-[0.05rem] self-start">
+              <p className="text-white/40 font-black text-sm tracking-[0.05rem] self-start">
                 +977-9766722920
               </p>
             </div>
@@ -64,10 +64,10 @@ const FinalCTA: React.FC = () => {
               <Phone className="w-4 h-4" />
             </div>
             <div className="overflow-hiddenf flex flex-col">
-              <h3 className="text-xs font-black text-white/40 uppercase tracking-widest mb-0.5 truncate">
+              <h3 className="text-xs font-black text-white uppercase tracking-widest mb-0.5 truncate">
                 Shubham Kr. Deo
               </h3>
-              <p className="text-white font-black text-sm tracking-[0.05rem] self-start">
+              <p className="text-white/40 font-black text-sm tracking-[0.05rem] self-start">
                 +977-9867420560
               </p>
             </div>
@@ -83,14 +83,14 @@ const FinalCTA: React.FC = () => {
             <div className="relative h-full flex items-center justify-between p-5 bg-mint rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-lg">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-black/10 rounded-xl flex items-center justify-center shrink-0">
-                  <FaWhatsapp className="w-5 h-5 text-primary" />
+                  <FaWhatsapp className="w-5 h-5 text-primary  dark:text-blue-950" />
                 </div>
-                <h3 className="text-sm font-black text-primary leading-tight">
+                <h3 className="text-sm font-black text-primary dark:text-blue-950 leading-tight">
                   Apply via WhatsApp
                 </h3>
               </div>
 
-              <div className="p-2 bg-primary text-white rounded-lg group-hover:bg-primary-light transition-colors">
+              <div className="p-2 bg-primary dark:text-blue-950 text-white rounded-lg group-hover:bg-primary-light transition-colors">
                 <ArrowRight className="w-4 h-4" />
               </div>
             </div>

@@ -8,13 +8,13 @@ import { Button } from "../ui/button";
 const careers = [
   { name: "Jobs", href: "/careers/jobs" },
   { name: "Internships", href: "/careers/internships" },
-  { name: "Training & Internship", href: "/careers/training" },
 ];
 
 const others = [
   { name: "Blog", href: "/others/blog" },
   { name: "Verify Certificate", href: "/others/verify-certificate" },
   { name: "Our Projects", href: "/others/our-projects" },
+  { name: "Contact Us", href: "/others/contact" },
 ];
 
 const services = [
@@ -30,6 +30,7 @@ const services = [
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
+  { name: "Training & Internship", href: "/training" },
   { name: "Services", href: "/services", dropdown: services },
   { name: "Careers", href: "/careers", dropdown: careers },
   { name: "Others", href: "/others", dropdown: others },
@@ -58,11 +59,11 @@ export function Navbar() {
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link to="/">
-            <img src="/logo.png" alt="Leafclutch Logo" className="h-14" />
+            <img src="/logo.png" alt="Leafclutch Logo" className="h-14 " />
           </Link>
 
           {/* -------- Desktop Navigation -------- */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center xl:gap-12 ">
             {navLinks.map((link) =>
               link.dropdown ? (
                 <div
@@ -73,9 +74,9 @@ export function Navbar() {
                 >
                   {/* Main button */}
                   <button
-                    className={`nav-link flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium ${
+                    className={`nav-link flex items-center gap-1 rounded-md px-3 py-2 font-semibold  ${
                       location.pathname.startsWith(link.href)
-                        ? "text-primary"
+                        ? "text-mint font-extrabold active"
                         : ""
                     }`}
                   >
@@ -89,12 +90,14 @@ export function Navbar() {
 
                   {/* Dropdown menu */}
                   {openDropdown === link.name && (
-                    <div className="absolute left-0 w-56 bg-card rounded-md shadow-lg border border-gray-100 dark:border-gray-700 z-10">
+                    <div className="absolute left-0 w-56 bg-card mt-0.5 rounded-md shadow-lg border border-gray-100 dark:border-gray-700 z-10 ">
                       {link.dropdown.map((item) => (
                         <Link
                           key={item.name}
                           to={item.href}
-                          className="block px-4 py-2 text-sm text-muted-foreground hover:bg-muted rounded-md transition-colors duration-150"
+                          className={
+                            "block px-4 py-2  text-muted-foreground hover:bg-muted rounded-md transition-colors duration-150"
+                          }
                           onClick={() => setOpenDropdown(null)} // close dropdown on click
                         >
                           {item.name}
@@ -107,8 +110,8 @@ export function Navbar() {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`nav-link rounded-md px-3 py-2 text-sm font-medium ${
-                    isActive(link.href) ? "text-primary" : ""
+                  className={`nav-link rounded-md px-3 py-2 font-semibold ${
+                    isActive(link.href) ? "text-mint font-extrabold active" : ""
                   }`}
                 >
                   {link.name}
@@ -118,7 +121,7 @@ export function Navbar() {
           </div>
 
           {/* Right section */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-10">
             <Button
               variant="ghost"
               size="icon"
@@ -150,10 +153,22 @@ export function Navbar() {
               </AnimatePresence>
             </Button>
             <div className="hidden sm:flex">
-              <Button asChild>
+              {/* <Button asChild>
                 <Link to="/login">
                   <LuCircleUserRound className="!w-6 !h-6" /> Login
                 </Link>
+              </Button> */}
+              <Button asChild className="!h-12">
+                <a
+                  href="https://leafclutch-dashboard.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-2 text-[1rem]"
+                >
+                  <LuCircleUserRound className="!w-7 !h-7" />
+                  Login
+                </a>
               </Button>
             </div>
 
@@ -260,10 +275,22 @@ export function Navbar() {
                     {isDark ? <Sun /> : <Moon />}
                   </Button> */}
 
-                  <Button asChild>
+                  {/* <Button asChild>
                     <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
                       <LuCircleUserRound className="!w-5 !h-5" /> Login
                     </Link>
+                  </Button> */}
+                  <Button asChild>
+                    <a
+                      href="https://leafclutch-dashboard.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-2"
+                    >
+                      <LuCircleUserRound className="!w-5 !h-5" />
+                      Login
+                    </a>
                   </Button>
                 </div>
               </div>

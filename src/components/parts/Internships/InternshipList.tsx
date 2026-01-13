@@ -47,6 +47,8 @@ const options: InternshipOption[] = [
   },
 ];
 
+const emailRecipient = "careers@leafclutchtech.com.np";
+
 export const InternshipList: React.FC = () => {
   return (
     <section className="py-24 bg-muted/50 px-4">
@@ -64,35 +66,59 @@ export const InternshipList: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {options.map((option, index) => (
-            <div
-              key={index}
-              className="bg-card p-8 rounded-3xl border border-border shadow-sm flex flex-col hover:border-primary/50 transition-colors"
-            >
-              <h3 className="text-xl font-bold text-card-foreground mb-6">
-                {option.title}
-              </h3>
+          {options.map((option, index) => {
+            // Pre-fill the email body
+            const body = `Hello,
 
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-3 text-muted-foreground">
-                  <Clock className="w-5 h-5" />
-                  <span className="text-sm font-medium">{option.duration}</span>
+I would like to apply for the ${option.title} position. Here is my information:
+
+Name: [Your Name]
+LinkedIn: [Your LinkedIn]
+GitHub: [Your GitHub]
+Resume: Please attach your resume file.
+
+Thank you.
+`;
+
+            const mailtoLink = `mailto:${emailRecipient}?subject=${encodeURIComponent(
+              `Internship Application: ${option.title}`
+            )}&body=${encodeURIComponent(body)}`;
+
+            return (
+              <div
+                key={index}
+                className="bg-card p-8 rounded-3xl border border-border shadow-sm flex flex-col hover:border-primary/50 transition-colors"
+              >
+                <h3 className="text-xl font-bold text-card-foreground mb-6">
+                  {option.title}
+                </h3>
+
+                <div className="space-y-4 mb-8">
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <Clock className="w-5 h-5" />
+                    <span className="text-sm font-medium">
+                      {option.duration}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <Users className="w-5 h-5" />
+                    <span className="text-sm font-medium">
+                      {option.audience}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 text-primary font-semibold">
+                    <DollarSign className="w-5 h-5" />
+                    <span className="text-sm">{option.stipend}</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3 text-muted-foreground">
-                  <Users className="w-5 h-5" />
-                  <span className="text-sm font-medium">{option.audience}</span>
-                </div>
-                <div className="flex items-center gap-3 text-primary font-semibold">
-                  <DollarSign className="w-5 h-5" />
-                  <span className="text-sm">{option.stipend}</span>
-                </div>
+                <a href={mailtoLink} target="_blank" rel="noopener noreferrer">
+                  <button className="w-full py-3 rounded-xl border border-border text-foreground font-bold hover:bg-muted transition-colors mt-auto">
+                    Apply Now
+                  </button>
+                </a>
               </div>
-
-              <button className="w-full py-3 rounded-xl border border-border text-foreground font-bold hover:bg-muted transition-colors mt-auto">
-                Apply Now
-              </button>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

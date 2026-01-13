@@ -1,5 +1,6 @@
 import React from "react";
 import { MessageSquare, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const FinalCTA: React.FC = () => {
   return (
@@ -18,14 +19,23 @@ const FinalCTA: React.FC = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <button className="w-full sm:w-auto px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 transition-all shadow-2xl flex items-center justify-center">
-            <MessageSquare className="mr-2 w-5 h-5" />
-            Schedule a Call
-          </button>
-          <button className="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-white/20 text-white font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center">
-            View All Services
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </button>
+          <a
+            href="https://wa.me/9766722920?text=I%20want%20to%20schedule%20a%20call"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative block cursor-pointer"
+          >
+            <button className="w-full sm:w-auto px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 transition-all shadow-2xl flex items-center justify-center">
+              <MessageSquare className="mr-2 w-5 h-5" />
+              Schedule a Call
+            </button>
+          </a>
+          <Link to="/services/all-services">
+            <button className="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-white/20 text-white font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center">
+              View All Services
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </button>
+          </Link>
         </div>
       </div>
     </section>
