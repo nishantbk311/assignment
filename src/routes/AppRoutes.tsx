@@ -14,6 +14,7 @@ import { ScrollToTop } from "./ScrollToTop";
 import TrainingInternship from "../pages/careers/TrainingInternship";
 import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
+import InternshipDetails from "../components/parts/AboutUs/InternDetails";
 
 export default function AppRoutes() {
   return (
@@ -23,6 +24,7 @@ export default function AppRoutes() {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/intern-details" element={<InternshipDetails />} />
           <Route path="/others/contact" element={<ContactUs />} />
           <Route path="/training" element={<TrainingInternship />} />
           <Route path="/careers/jobs" element={<Job />} />

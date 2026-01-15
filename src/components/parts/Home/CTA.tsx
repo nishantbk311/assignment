@@ -1,41 +1,75 @@
 import React from "react";
-import { Calendar, ArrowRight } from "lucide-react";
+import { Mail, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
-export const CTA: React.FC = () => {
+const CTA: React.FC = () => {
   return (
-    <section className="py-24 px-4">
-      <div className="max-w-7xl mx-auto bg-primary rounded-[3rem] p-12 md:p-24 text-center text-primary-foreground relative overflow-hidden shadow-2xl">
-        {/* Background elements using the primary color scheme */}
-        <div className="absolute top-0 left-0 w-full h-full bg-[var(--gradient-primary)] opacity-95"></div>
+    <section className="section-padding px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[95rem] mx-auto bg-primary border border-white/10 rounded-[3rem] p-10 md:p-20 flex flex-col lg:flex-row items-center justify-between gap-12 text-white relative overflow-hidden shadow-2xl">
+        {/* Animated Background Glow */}
+        <div className="absolute -top-20 -right-20 w-80 h-80 bg-blue-500/20 rounded-full blur-[100px] animate-pulse-slow"></div>
+        <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-cyan-500/20 rounded-full blur-[100px] animate-pulse-slow"></div>
 
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <h2 className="text-5xl md:text-7xl font-black mb-10 leading-tight tracking-tighter">
-            Ready to Build the Future?
+        <div className="text-left space-y-8 max-w-2xl relative z-10">
+          <h2 className="text-5xl md:text-6xl font-heading font-extrabold leading-[1.1] tracking-tight">
+            Ready to <br /> Transform Your <br />
+            <span className="text-cyan-400">Business?</span>
           </h2>
-          <p className="text-xl md:text-2xl text-primary-foreground/90 mb-14 leading-relaxed font-medium">
-            Schedule a session with our solution architects to map out your
-            digital strategy and engineering roadmap.
+          <p className="text-slate-300 text-xl md:text-xl leading-relaxed max-w-xl">
+            Let's discuss how our solutions can help you achieve your goals. Get
+            a free consultation with our experts.
           </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
-            <button className="w-full sm:w-auto px-12 py-6 bg-white text-primary font-black text-xl rounded-2xl flex items-center justify-center gap-4 hover:shadow-[0_20px_40px_rgba(255,255,255,0.3)] transition-all hover:scale-105 active:scale-95 group">
-              <Calendar size={24} />
-              Book Free Strategy Call
-              <ArrowRight
-                size={22}
-                className="group-hover:translate-x-1 transition-transform"
-              />
-            </button>
-            <button className="w-full sm:w-auto px-12 py-6 bg-transparent border-2 border-white/20 text-white font-black text-xl rounded-2xl hover:bg-white/10 transition-all">
-              Our Process
-            </button>
+          <div className="flex flex-wrap gap-5 pt-4">
+            <Link to="/others/contact">
+              <button className="text-[1.2rem] px-10 py-4 bg-white text-[#0A192F] font-extrabold rounded-full flex justify-center items-center space-x-3 hover:scale-105 transition-all shadow-xl">
+                <span>Get Started</span>
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </Link>
+            {/* <button className="px-10 py-4 bg-white/5 border border-white/20 text-white font-extrabold rounded-full backdrop-blur-md hover:bg-white/10 transition-all active:scale-95">
+              View Pricing
+            </button> */}
           </div>
         </div>
 
-        {/* Brand-aligned decorations */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-[80px]"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-mint/20 rounded-full translate-y-1/2 -translate-x-1/2 blur-[60px]"></div>
+        <div className="flex flex-col md:flex-row items-center gap-10 relative z-10 w-full lg:w-auto">
+          <a
+            href="https://discord.gg/4aDwcMZBPq"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="bg-white  rounded-[2.5rem] shadow-[0_0_50px_rgba(255,255,255,0.15)] text-center flex flex-col items-center group transition-transform hover:rotate-2">
+              <img
+                src="/qr.png"
+                alt="Discord QR"
+                className="rounded-[2.5rem] "
+              />
+            </div>
+          </a>
+
+          <a
+            href="mailto:info@leafclutchtech.com.np"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="p-8 bg-white/5 backdrop-blur-xl rounded-[2rem] border border-white/10 flex items-center space-x-5 shadow-2xl group hover:bg-white/10 transition-all cursor-pointer w-full md:w-auto">
+              <div className="w-14 h-14 bg-cyan-400 rounded-2xl flex items-center justify-center text-[#0A192F] group-hover:rotate-12 transition-transform ">
+                <Mail className="w-7 h-7" />
+              </div>
+              <div className="text-left">
+                <p className="text-cyan-400 text-xs font-black uppercase tracking-[0.2em] mb-1">
+                  Email us
+                </p>
+                <p className="text-base sm:text-xl font-bold tracking-tight">
+                  info@leafclutchtech.com.np
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
       </div>
     </section>
   );
 };
+
+export default CTA;

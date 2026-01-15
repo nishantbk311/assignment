@@ -16,6 +16,7 @@ export default function Starting({ pageName, srcImage }: StartingProps) {
   ),
   url(${srcImage})
 `,
+  
   };
 
   return (

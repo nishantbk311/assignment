@@ -160,7 +160,7 @@ export function Navbar() {
                 )}
               </AnimatePresence>
             </Button>
-            <div className="hidden sm:flex">
+            <div className="hidden lg:flex">
               {/* <Button asChild>
                 <Link to="/login">
                   <LuCircleUserRound className="!w-6 !h-6" /> Login
