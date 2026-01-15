@@ -1,9 +1,27 @@
 import React from "react";
+import { motion, easeOut } from "framer-motion";
+import type { Variants } from "framer-motion";
+
+// Fade-in variant
+const fadeIn: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: easeOut },
+  },
+};
 
 const AboutAI: React.FC = () => {
   return (
     <section className="w-full bg-primary py-24 px-4 sm:px-6 lg:px-8 text-center text-primary-foreground transition-colors duration-500">
-      <div className="max-w-4xl mx-auto space-y-8">
+      <motion.div
+        className="max-w-4xl mx-auto space-y-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeIn}
+      >
         <p className="text-base font-bold uppercase tracking-[0.3em] text-mint">
           Our Commitment
         </p>
@@ -17,7 +35,7 @@ const AboutAI: React.FC = () => {
           development. We're committed to building AI that augments human
           capabilities rather than replacing human judgment.
         </p>
-      </div>
+      </motion.div>
     </section>
   );
 };

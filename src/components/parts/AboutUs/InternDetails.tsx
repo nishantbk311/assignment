@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
+import type { Variants } from "framer-motion";
 
 const internTeam = [
   {
@@ -78,25 +79,57 @@ const internTeam = [
   // },
 ];
 
-const InternshipDetails = () => {
+// Fade-in variant for individual items
+const fadeIn: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: easeOut },
+  },
+};
+
+// Container variant to stagger children
+const staggerContainer: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15, // delay between each child's animation
+    },
+  },
+};
+
+const InternshipDetails: React.FC = () => {
   return (
     <section className="pt-20 pb-20 bg-background">
-      <div className="container-padding mx-auto max-w-7xl">
-        <div className="text-center mb-16">
+      <motion.div
+        className="container-padding mx-auto max-w-7xl"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={staggerContainer}
+      >
+        {/* Heading */}
+        <motion.div className="text-center mb-16" variants={fadeIn}>
           <h1 className="text-4xl font-bold text-primary dark:text-dark md:text-5xl mb-4">
             Our Intern Team
           </h1>
           <p className="text-muted-foreground text-lg">
             The talented individuals shaping the future of Leafclutch.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        {/* Intern Cards */}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
+          variants={staggerContainer}
+        >
           {internTeam.map((intern, index) => (
             <motion.div
               key={index}
               whileHover={{ y: -8 }}
               className="flex flex-col items-center p-6 rounded-2xl border border-border bg-card shadow-sm hover:border-accent/50 transition-all"
+              variants={fadeIn}
             >
               <div className="relative w-48 h-48 mb-6 overflow-hidden rounded-xl border-2 border-accent/10">
                 <img
@@ -121,20 +154,13 @@ const InternshipDetails = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-[#0077B5] hover:opacity-80 transition-opacity"
                 >
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                  </svg>
                   LinkedIn Profile
                 </a>
               </div>
             </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

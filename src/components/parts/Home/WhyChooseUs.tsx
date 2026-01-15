@@ -7,6 +7,8 @@ import {
   Award,
   CheckCircle,
 } from "lucide-react";
+import { motion, easeOut } from "framer-motion";
+import type { Variants } from "framer-motion";
 
 const stats = [
   { value: "5+", label: "Projects Delivered" },
@@ -46,13 +48,35 @@ const features = [
     desc: "We've helped businesses across industries achieve measurable growth and operational excellence.",
   },
 ];
+// Motion Variants
+const slideLeft: Variants = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: easeOut } },
+};
+
+const slideRight: Variants = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: easeOut } },
+};
+
+const containerVariants: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
 
 const WhyUs: React.FC = () => {
   return (
     <section className="section-padding bg-secondary/30">
       <div className="max-w-[95rem] mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
-        <div className="text-left space-y-8">
-          <div className="space-y-4">
+        {/* Text Content */}
+        <motion.div
+          className="text-left space-y-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
+          <motion.div className="space-y-4" variants={slideLeft}>
             <p className="text-mint font-bold uppercase tracking-widest text-sm">
               Why Leafclutch
             </p>
@@ -65,27 +89,40 @@ const WhyUs: React.FC = () => {
               Our commitment to quality, transparency, and client success sets
               us apart.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-3 gap-8 pt-8">
+          {/* Stats */}
+          <motion.div className="grid grid-cols-3 gap-8 pt-8">
             {stats.map((stat, i) => (
-              <div key={i} className="text-center md:text-left">
+              <motion.div
+                key={i}
+                className="text-center md:text-left"
+                variants={slideLeft}
+              >
                 <p className="text-3xl sm:text-5xl font-bold text-primary dark:text-foreground">
                   {stat.value}
                 </p>
                 <p className="text-muted-foreground font-medium text-sm mt-1">
                   {stat.label}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-6">
+        {/* Features */}
+        <motion.div
+          className="grid sm:grid-cols-2 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
           {features.map((feature, i) => (
-            <div
+            <motion.div
               key={i}
               className="bg-card border border-border p-6 rounded-2xl hover:shadow-md transition-shadow"
+              variants={slideRight}
             >
               <div className="p-2 bg-accent/10 w-fit rounded-lg mb-4">
                 {feature.icon}
@@ -94,9 +131,9 @@ const WhyUs: React.FC = () => {
               <p className="text-muted-foreground text-sm leading-relaxed">
                 {feature.desc}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

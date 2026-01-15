@@ -1,6 +1,8 @@
 import React from "react";
 import { Linkedin, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion, easeOut } from "framer-motion";
+import type { Variants } from "framer-motion";
 
 const teamMembers = [
   {
@@ -53,16 +55,43 @@ const teamMembers = [
   },
 ];
 
+// Fade-in variants
+const fadeIn: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
+};
+
+const staggerContainer: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
 const AboutTeam: React.FC = () => {
   return (
     <section className="section-padding max-w-[95rem] mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-16">
-      <h2 className="text-4xl font-heading font-bold text-primary">
+      <motion.h2
+        className="text-4xl font-heading font-bold text-primary"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeIn}
+      >
         Our Team Members
-      </h2>
+      </motion.h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+      <motion.div
+        className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={staggerContainer}
+      >
         {teamMembers.map((member, idx) => (
-          <div key={idx} className="space-y-4 text-center group">
+          <motion.div
+            key={idx}
+            className="space-y-4 text-center group"
+            variants={fadeIn}
+          >
             <div className="aspect-square overflow-hidden rounded-3xl border-2 border-transparent group-hover:border-accent transition-all shadow-md bg-muted">
               <img
                 src={member.image}
@@ -88,18 +117,26 @@ const AboutTeam: React.FC = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.6, ease: easeOut },
+        }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
         <Link to="/intern-details">
           <button className="px-12 py-5 bg-primary text-white font-bold rounded-full hover:scale-105 transition-all flex items-center mx-auto space-x-3 uppercase tracking-[0.2em] text-base">
             <span>Our Intern Team</span>
             <ArrowRight className="w-5 h-5" />
           </button>
         </Link>
-      </div>
+      </motion.div>
     </section>
   );
 };

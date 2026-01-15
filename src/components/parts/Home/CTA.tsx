@@ -1,16 +1,43 @@
 import React from "react";
 import { Mail, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion, easeOut } from "framer-motion";
+import type { Variants } from "framer-motion";
+
+const slideLeft: Variants = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: easeOut } },
+};
+
+const slideRight: Variants = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: easeOut } },
+};
+
+const containerVariants: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
 
 const CTA: React.FC = () => {
   return (
     <section className="section-padding px-4 sm:px-6 lg:px-8">
-      <div className="max-w-[95rem] mx-auto bg-primary border border-white/10 rounded-[3rem] p-10 md:p-20 flex flex-col lg:flex-row items-center justify-between gap-12 text-white relative overflow-hidden shadow-2xl">
+      <motion.div
+        className="max-w-[95rem] mx-auto bg-primary border border-white/10 rounded-[3rem] p-10 md:p-20 flex flex-col lg:flex-row items-center justify-between gap-12 text-white relative overflow-hidden shadow-2xl"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={containerVariants}
+      >
         {/* Animated Background Glow */}
         <div className="absolute -top-20 -right-20 w-80 h-80 bg-blue-500/20 rounded-full blur-[100px] animate-pulse-slow"></div>
         <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-cyan-500/20 rounded-full blur-[100px] animate-pulse-slow"></div>
 
-        <div className="text-left space-y-8 max-w-2xl relative z-10">
+        {/* Text Content */}
+        <motion.div
+          className="text-left space-y-8 max-w-2xl relative z-10"
+          variants={slideLeft}
+        >
           <h2 className="text-5xl md:text-6xl font-heading font-extrabold leading-[1.1] tracking-tight">
             Ready to <br /> Transform Your <br />
             <span className="text-cyan-400">Business?</span>
@@ -21,28 +48,33 @@ const CTA: React.FC = () => {
           </p>
           <div className="flex flex-wrap gap-5 pt-4">
             <Link to="/others/contact">
-              <button className="text-[1.2rem] px-10 py-4 bg-white text-[#0A192F] font-extrabold rounded-full flex justify-center items-center space-x-3 hover:scale-105 transition-all shadow-xl">
+              <motion.button
+                className="text-[1.2rem] px-10 py-4 bg-white text-[#0A192F] font-extrabold rounded-full flex justify-center items-center space-x-3 hover:scale-105 transition-all shadow-xl"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <span>Get Started</span>
                 <ArrowRight className="w-5 h-5" />
-              </button>
+              </motion.button>
             </Link>
-            {/* <button className="px-10 py-4 bg-white/5 border border-white/20 text-white font-extrabold rounded-full backdrop-blur-md hover:bg-white/10 transition-all active:scale-95">
-              View Pricing
-            </button> */}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-col md:flex-row items-center gap-10 relative z-10 w-full lg:w-auto">
+        {/* QR & Email */}
+        <motion.div
+          className="flex flex-col md:flex-row items-center gap-10 relative z-10 w-full lg:w-auto"
+          variants={slideRight}
+        >
           <a
             href="https://discord.gg/4aDwcMZBPq"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="bg-white  rounded-[2.5rem] shadow-[0_0_50px_rgba(255,255,255,0.15)] text-center flex flex-col items-center group transition-transform hover:rotate-2">
+            <div className="bg-white rounded-[2.5rem] shadow-[0_0_50px_rgba(255,255,255,0.15)] text-center flex flex-col items-center group transition-transform hover:rotate-2">
               <img
                 src="/qr.png"
                 alt="Discord QR"
-                className="rounded-[2.5rem] "
+                className="rounded-[2.5rem]"
               />
             </div>
           </a>
@@ -53,7 +85,7 @@ const CTA: React.FC = () => {
             rel="noopener noreferrer"
           >
             <div className="p-8 bg-white/5 backdrop-blur-xl rounded-[2rem] border border-white/10 flex items-center space-x-5 shadow-2xl group hover:bg-white/10 transition-all cursor-pointer w-full md:w-auto">
-              <div className="w-14 h-14 bg-cyan-400 rounded-2xl flex items-center justify-center text-[#0A192F] group-hover:rotate-12 transition-transform ">
+              <div className="w-14 h-14 bg-cyan-400 rounded-2xl flex items-center justify-center text-[#0A192F] group-hover:rotate-12 transition-transform">
                 <Mail className="w-7 h-7" />
               </div>
               <div className="text-left">
@@ -66,8 +98,8 @@ const CTA: React.FC = () => {
               </div>
             </div>
           </a>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

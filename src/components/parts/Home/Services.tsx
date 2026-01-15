@@ -11,6 +11,8 @@ import {
 import Gifs from "../AllServices/Gifs";
 import TrainingCTA from "./TrainingCTA";
 import { Link } from "react-router-dom";
+import { motion, easeOut } from "framer-motion";
+import type { Variants } from "framer-motion";
 
 const serviceList = [
   {
@@ -104,6 +106,16 @@ const serviceList = [
     href: "/services/digital-marketing",
   },
 ];
+// for animation
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
+};
+
+const containerVariants: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
 
 const Services: React.FC = () => {
   return (
@@ -112,23 +124,48 @@ const Services: React.FC = () => {
       className="section-padding bg-background relative transition-colors duration-500 border-t"
     >
       <div className="max-w-[95rem] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="space-y-4 mb-16">
-          <p className="text-mint font-bold uppercase tracking-widest text-sm">
+        {/* Section Heading */}
+        <motion.div
+          className="space-y-4 mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
+          <motion.p
+            className="text-mint font-bold uppercase tracking-widest text-sm"
+            variants={fadeInUp}
+          >
             What we offer
-          </p>
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-primary dark:text-foreground">
+          </motion.p>
+          <motion.h2
+            className="text-4xl md:text-5xl font-heading font-bold text-primary dark:text-foreground"
+            variants={fadeInUp}
+          >
             Comprehensive Technology <br /> Solutions
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+          </motion.h2>
+          <motion.p
+            className="text-muted-foreground max-w-2xl mx-auto text-lg"
+            variants={fadeInUp}
+          >
             From custom software to AI automation, we deliver end-to-end
             solutions that transform your business operations.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          </motion.p>
+        </motion.div>
+
+        {/* Services Grid */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
           {serviceList.map((service, index) => (
-            <div
+            <motion.div
               key={index}
               className="group p-10 bg-card border border-border rounded-[2.5rem] text-left hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
+              variants={fadeInUp}
             >
               <div className="flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
@@ -149,9 +186,11 @@ const Services: React.FC = () => {
                 <span className="text-[1.05rem]">Learn more</span>
                 <ArrowRight className="ml-2 w-5 h-5 inline transition-transform group-hover/link:translate-x-2" />
               </Link>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
+
+        {/* CTA Section */}
         <TrainingCTA />
       </div>
     </section>
