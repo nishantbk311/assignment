@@ -59,11 +59,15 @@ export function Navbar() {
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link to="/">
-            <img src="/logo.png" alt="Leafclutch Logo" className="h-14 " />
+            <img
+              src="/logo.png"
+              alt="Leafclutch Logo"
+              className="h-14 lg:h-10 xl:h-14"
+            />
           </Link>
 
           {/* -------- Desktop Navigation -------- */}
-          <div className="hidden lg:flex items-center xl:gap-12 ">
+          <div className="hidden lg:flex items-center lg:text-xs min-[1200px]:text-sm lg:gap-[1vw] xl:text-base xl:gap-[2vw] ">
             {navLinks.map((link) =>
               link.dropdown ? (
                 <div

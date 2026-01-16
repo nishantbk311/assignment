@@ -21,7 +21,7 @@ const ServiceCard: React.FC<{
 
       <div className="relative z-10 flex flex-col items-center">
         {/* Icon Container */}
-        <div className="w-1/2 h-[12rem] dark:bg-slate-800 rounded-xl flex items-center justify-center text-primary dark:text-mint mb-4 border border-blue-100/50 dark:border-slate-700">
+        <div className="w-1/2 h-[12rem] rounded-xl flex items-center justify-center text-primary dark:text-mint mb-4 ">
           {service.icon}
         </div>
 

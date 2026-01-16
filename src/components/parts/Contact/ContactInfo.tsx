@@ -73,7 +73,7 @@ const ContactInfo: React.FC = () => {
           <div className="space-y-1 pt-1 text-left">
             <h3 className="text-xl font-bold text-primary">Visit Us</h3>
             <div className="text-muted-foreground space-y-0.5 font-medium">
-              <p>Bhairahawa</p>
+              <p>Siddharthanagar</p>
               <p>
                 Rupandehi, Nepal{" "}
                 <span className="text-[10px] font-bold text-accent">NP</span>
@@ -93,7 +93,7 @@ const ContactInfo: React.FC = () => {
           <div className="space-y-1 pt-1 text-left">
             <h3 className="text-xl font-bold text-primary">Call Us</h3>
             <div className="text-muted-foreground space-y-0.5 font-medium">
-              <p>+977-9766722920</p>
+              <p>+977-9766715768</p>
               <p>+977-9766715666</p>
             </div>
           </div>

@@ -65,7 +65,7 @@ const AboutFounders: React.FC = () => {
                 Siddhartha Pathak
               </h3>
               <p className="text-muted-foreground font-medium">
-                Co-Founder & CTO
+                Founder | Director | CTO
               </p>
               <div className="flex space-x-5">
                 <Mail className="w-5 h-5 text-accent cursor-pointer hover:scale-110 transition-transform" />
@@ -111,7 +111,7 @@ const AboutFounders: React.FC = () => {
                 Shubham Kumar Deo
               </h3>
               <p className="text-muted-foreground font-medium">
-                Co-Founder & CEO
+                Co-Founder | CEO
               </p>
               <div className="flex space-x-5">
                 <Mail className="w-5 h-5 text-accent cursor-pointer hover:scale-110 transition-transform" />

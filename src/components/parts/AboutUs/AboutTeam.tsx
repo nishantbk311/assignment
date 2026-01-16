@@ -29,29 +29,36 @@ const teamMembers = [
     linkedin: "https://linkedin.com/in/siddharthapathak",
     image: "https://i.postimg.cc/jdb4dkY2/siddhartha.jpg",
   },
-  {
-    name: "Saurya Chaudhary",
-    role: "Cyber security specialist",
-    linkedin: "https://www.linkedin.com/in/saurya-chaudhary-ab680b243/",
-    image: "https://i.postimg.cc/c4SB45G6/saurya.jpg",
-  },
+  // {
+  //   name: "Saurya Chaudhary",
+  //   role: "Cyber security specialist",
+  //   linkedin: "https://www.linkedin.com/in/saurya-chaudhary-ab680b243/",
+  //   image: "https://i.postimg.cc/c4SB45G6/saurya.jpg",
+  // },
   {
     name: "Roshan Kumar Singh",
     role: "Backend & AI",
     linkedin: "https://www.linkedin.com/in/roshan-kumar-singh-60b68a253/",
     image: "https://i.postimg.cc/xjgPs3zD/roshan.jpg",
   },
+  // {
+  //   name: "Ayush Kumar Thakur",
+  //   role: "MERN Stack",
+  //   linkedin: "https://www.linkedin.com/in/ayush-kumar-thakur/",
+  //   image: "https://i.postimg.cc/xT7WSrsY/Ayush-Thakur.jpg",
+  // },
+  // {
+  //   name: "Aniket shah",
+  //   role: "MERN Stack",
+  //   linkedin: "https://www.linkedin.com/in/aniket-sah/",
+  //   image: "https://i.postimg.cc/433LKBFN/aniket-shah.jpg",
+  // },
   {
-    name: "Ayush Kumar Thakur",
-    role: "MERN Stack",
-    linkedin: "https://www.linkedin.com/in/ayush-kumar-thakur/",
-    image: "https://i.postimg.cc/xT7WSrsY/Ayush-Thakur.jpg",
-  },
-  {
-    name: "Aniket shah",
-    role: "MERN Stack",
-    linkedin: "https://www.linkedin.com/in/aniket-sah/",
-    image: "https://i.postimg.cc/433LKBFN/aniket-shah.jpg",
+    name: "Shibika Nepal",
+    role: "HR",
+    linkedin: "https://www.linkedin.com/in/shibika-nepal-a66a46345/",
+    image:
+      "https://media.licdn.com/dms/image/v2/D5603AQHpyegYqRXyfw/profile-displayphoto-shrink_400_400/B56Zd5mZZsHQAs-/0/1750091800508?e=1770249600&v=beta&t=UcV6GjdTtavT-84gmOReihM3OUIKN9J9h0waYBjC-xI",
   },
 ];
 
@@ -80,10 +87,10 @@ const AboutTeam: React.FC = () => {
       </motion.h2>
 
       <motion.div
-        className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 lg:gap-x-0"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0 }}
         variants={staggerContainer}
       >
         {teamMembers.map((member, idx) => (
@@ -92,7 +99,7 @@ const AboutTeam: React.FC = () => {
             className="space-y-4 text-center group"
             variants={fadeIn}
           >
-            <div className="aspect-square overflow-hidden rounded-3xl border-2 border-transparent group-hover:border-accent transition-all shadow-md bg-muted">
+            <div className="w-[90%] aspect-square mx-auto overflow-hidden rounded-3xl border-2 border-transparent group-hover:border-accent transition-all shadow-md bg-muted">
               <img
                 src={member.image}
                 alt={member.name}

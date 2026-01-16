@@ -121,7 +121,7 @@ const Services: React.FC = () => {
   return (
     <section
       id="services"
-      className="section-padding bg-background relative transition-colors duration-500 border-t"
+      className="section-padding bg-background relative transition-colors duration-500 "
     >
       <div className="max-w-[95rem] mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Section Heading */}

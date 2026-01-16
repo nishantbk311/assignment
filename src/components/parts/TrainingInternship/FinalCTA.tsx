@@ -47,10 +47,10 @@ const FinalCTA: React.FC = () => {
             </div>
             <div className="overflow-hidden flex flex-col">
               <h3 className="text-sm font-black text-white uppercase tracking-widest mb-0.5 truncate">
-                Siddhartha Pathak
+                Shibika Nepal
               </h3>
               <p className="text-white/40 font-black text-sm tracking-[0.05rem] self-start">
-                +977-9766722920
+                +977-9766715768
               </p>
             </div>
           </a>

@@ -95,6 +95,7 @@ export const service = {
         "Data Analyst",
         "Data Science",
         "Agentic AI",
+        "Generative AI",
       ],
     },
     {

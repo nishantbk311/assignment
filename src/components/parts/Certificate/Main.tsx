@@ -135,8 +135,8 @@ const App: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-6 mt-8 text-sm text-muted-foreground">
             {[
               "Official Verification",
-              "Blockchain Verified",
-              "Global Standards",
+              // "Blockchain Verified",
+              // "Global Standards",
             ].map((item, idx) => (
               <motion.div
                 key={idx}

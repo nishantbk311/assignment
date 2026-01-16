@@ -232,25 +232,25 @@ const TimelineComponent: React.FC = () => {
             zIndex: 50,
             transition: { duration: 0.3 },
           }}
-          className="group relative flex flex-col items-center px-7 py-9 bg-white dark:bg-slate-900 rounded-[2.8rem] shadow-[0_22px_55px_-15px_rgba(0,0,0,0.09)] dark:shadow-[0_22px_55px_-15px_rgba(0,0,0,0.65)] justify-center cursor-default transition-all duration-300 hover:bg-[#00D1C1] dark:hover:bg-[#00D1C1] hover:shadow-[0_42px_85px_-20px_rgba(0,209,193,0.42)]"
+          className="group relative flex flex-col items-center px-7 py-9 bg-primary dark:bg-slate-900 rounded-[2.8rem] shadow-[0_22px_55px_-15px_rgba(0,0,0,0.09)] dark:shadow-[0_22px_55px_-15px_rgba(0,0,0,0.65)] justify-center cursor-default transition-all duration-300 hover:bg-[#00D1C1] dark:hover:bg-[#00D1C1] hover:shadow-[0_42px_85px_-20px_rgba(0,209,193,0.42)]"
         >
           {/* Connector Notches (Diamond shapes) */}
           {!isMobile && index !== 0 && (
             <div
-              className="absolute top-1/2 -left-[15px] -translate-y-1/2 w-9 h-9 bg-white dark:bg-slate-900 rotate-45 z-[-1] rounded-sm group-hover:bg-[#00D1C1] transition-colors duration-300"
+              className="absolute top-1/2 -left-[15px] -translate-y-1/2 w-9 h-9 bg-primary dark:bg-slate-900 rotate-45 z-[-1] rounded-sm group-hover:bg-[#00D1C1] transition-colors duration-300"
               style={{ clipPath: "polygon(0% 0%, 100% 0%, 0% 100%)" }}
             />
           )}
           {!isMobile && index !== cards.length - 1 && (
             <div
-              className="absolute top-1/2 -right-[15px] -translate-y-1/2 w-9 h-9 bg-white dark:bg-slate-900 rotate-45 z-[-1] rounded-sm group-hover:bg-[#00D1C1] transition-colors duration-300"
+              className="absolute top-1/2 -right-[15px] -translate-y-1/2 w-9 h-9 bg-primary dark:bg-slate-900 rotate-45 z-[-1] rounded-sm group-hover:bg-[#00D1C1] transition-colors duration-300"
               style={{ clipPath: "polygon(100% 0%, 100% 100%, 0% 100%)" }}
             />
           )}
 
           {isMobile && index !== 0 && (
             <div
-              className="absolute left-1/2 -translate-x-1/2 w-9 h-9 bg-white dark:bg-slate-900 rotate-45 z-[-1] rounded-sm group-hover:bg-[#00D1C1] transition-colors duration-300"
+              className="absolute left-1/2 -translate-x-1/2 w-9 h-9 bg-primary dark:bg-slate-900 rotate-45 z-[-1] rounded-sm group-hover:bg-[#00D1C1] transition-colors duration-300"
               style={{
                 top: `-${MOBILE_NOTCH_OFFSET + 1}px`,
                 clipPath: "polygon(0% 0%, 100% 0%, 0% 100%)",
@@ -259,7 +259,7 @@ const TimelineComponent: React.FC = () => {
           )}
           {isMobile && index !== cards.length - 1 && (
             <div
-              className="absolute left-1/2 -translate-x-1/2 w-9 h-9 bg-white dark:bg-slate-900 rotate-45 z-[-1] rounded-sm group-hover:bg-[#00D1C1] transition-colors duration-300"
+              className="absolute left-1/2 -translate-x-1/2 w-9 h-9 bg-primary dark:bg-slate-900 rotate-45 z-[-1] rounded-sm group-hover:bg-[#00D1C1] transition-colors duration-300"
               style={{
                 bottom: `-${MOBILE_NOTCH_OFFSET + 1}px`,
                 clipPath: "polygon(100% 0%, 100% 100%, 0% 100%)",
@@ -267,23 +267,23 @@ const TimelineComponent: React.FC = () => {
             />
           )}
 
-          <div className="mb-5 w-15 h-15 rounded-full  shadow-sm flex items-center justify-center border border-slate-100 dark:border-slate-800 transition-all duration-300 group-hover:bg-white/20 group-hover:border-white/30 shrink-0">
+          <div className="mb-5 w-15 h-15 rounded-full  shadow-sm flex items-center justify-center  dark:border-slate-800 transition-all duration-300 group-hover:bg-white/20 group-hover:border-white/30 shrink-0">
             <card.icon
-              className="w-10 h-10 text-[#00D1C1] group-hover:text-white transition-colors duration-300"
+              className="w-10 h-10 text-white group-hover:text-white transition-colors duration-300"
               strokeWidth={2.2}
             />
           </div>
 
           <div className="text-center flex flex-col select-none">
-            <h3 className="text-[0.78rem] font-bold text-slate-500 dark:text-slate-400 leading-snug mb-2 tracking-widest transition-colors duration-300 group-hover:text-white uppercase">
+            <h3 className="text-[0.78rem] font-bold text-white dark:text-slate-400 leading-snug mb-2 tracking-widest transition-colors duration-300 group-hover:text-white uppercase">
               {card.label}
             </h3>
 
-            <div className="text-5xl font-black text-[#0D2B6B] dark:text-blue-400 tracking-tighter transition-colors duration-300 group-hover:text-white mb-3">
+            <div className="text-5xl font-black text-white dark:text-blue-400 tracking-tighter transition-colors duration-300 group-hover:text-white mb-3">
               {card.value}
             </div>
 
-            <p className="text-[0.82rem] font-medium text-slate-400 dark:text-slate-500 leading-relaxed transition-colors duration-300 group-hover:text-white/90 px-2 italic">
+            <p className="text-[0.82rem] font-medium text-white dark:text-slate-500 leading-relaxed transition-colors duration-300 group-hover:text-white/90 px-2 italic">
               "{card.description}"
             </p>
           </div>

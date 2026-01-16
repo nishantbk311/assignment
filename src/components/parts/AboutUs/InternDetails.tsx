@@ -101,7 +101,7 @@ const staggerContainer: Variants = {
 
 const InternshipDetails: React.FC = () => {
   return (
-    <section className="pt-20 pb-20 bg-background">
+    <section className="py-20 px-8 bg-background">
       <motion.div
         className="container-padding mx-auto max-w-7xl"
         initial="hidden"

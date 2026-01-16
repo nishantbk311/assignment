@@ -62,13 +62,20 @@ const Hero: React.FC<HeroProps> = ({
           {/* High-Impact CTA */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link to="/others/contact">
-              <button className="relative group w-full sm:w-auto px-10 py-4 bg-mint text-primary dark:text-blue-950 font-black rounded-2xl transition-all flex items-center justify-center overflow-hidden">
+              <button className="relative group w-full sm:w-auto px-10 py-4 bg-white hover:bg-[#ccc] text-primary dark:text-blue-950 font-bold rounded-2xl transition-all flex items-center justify-center overflow-hidden">
+                <span className="relative z-10 flex items-center">
+                  Get Started
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+                {/* <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" /> */}
+              </button>
+              {/* <button className="relative w-full sm:w-auto px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 transition-all shadow-2xl flex items-center justify-center">
                 <span className="relative z-10 flex items-center">
                   Get Started
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
-              </button>
+              </button> */}
             </Link>
 
             {/* <button className="w-full sm:w-auto px-10 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-bold rounded-2xl border border-white/20 transition-all shadow-xl">

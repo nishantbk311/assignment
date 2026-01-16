@@ -57,7 +57,7 @@ const socials = [
     href: "https://www.youtube.com/@LeafclutchTechnologies",
     label: "YouTube",
   },
-  { icon: TbBrandTiktok, href: "https://www.tiktok.com/en/", label: "Tiktok" },
+  { icon: TbBrandTiktok, href: "https://www.tiktok.com/@leafclutchtechnologies1?is_from_webapp=1&sender_device=pc", label: "Tiktok" },
   {
     icon: TbBrandDiscord,
     href: "https://discord.gg/4aDwcMZBPq",
@@ -93,15 +93,15 @@ export function Footer() {
                 info@leafclutchtech.com.np
               </a>
               <a
-                href="tel:+1234567890"
+                href="tel:+9779766715768"
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
               >
                 <Phone className="h-4 w-4" />
-                +977-9766715666
+                +977-9766715768
               </a>
               <p className="flex items-center gap-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4" />
-                Bhairahawa, Lumbini
+                Siddharthanagar, Rupandehi
               </p>
             </div>
 

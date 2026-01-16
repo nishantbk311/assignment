@@ -23,7 +23,7 @@ const CTA: React.FC = () => {
   return (
     <section className="section-padding px-4 sm:px-6 lg:px-8">
       <motion.div
-        className="max-w-[95rem] mx-auto bg-primary border border-white/10 rounded-[3rem] p-10 md:p-20 flex flex-col lg:flex-row items-center justify-between gap-12 text-white relative overflow-hidden shadow-2xl"
+        className="max-w-[95rem] mx-auto bg-gradient-to-br from-primary to-blue-600 border border-white/10 rounded-[2rem] p-10 md:p-20 flex flex-col lg:flex-row items-center justify-between gap-12 text-white relative overflow-hidden shadow-2xl"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -70,12 +70,8 @@ const CTA: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="bg-white rounded-[2.5rem] shadow-[0_0_50px_rgba(255,255,255,0.15)] text-center flex flex-col items-center group transition-transform hover:rotate-2">
-              <img
-                src="/qr.png"
-                alt="Discord QR"
-                className="rounded-[2.5rem]"
-              />
+            <div className="bg-white rounded-[1rem] shadow-[0_0_50px_rgba(255,255,255,0.15)] text-center flex flex-col items-center group transition-transform hover:rotate-2">
+              <img src="/qr.png" alt="Discord QR" className="rounded-[1rem]" />
             </div>
           </a>
 
@@ -84,9 +80,9 @@ const CTA: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="p-8 bg-white/5 backdrop-blur-xl rounded-[2rem] border border-white/10 flex items-center space-x-5 shadow-2xl group hover:bg-white/10 transition-all cursor-pointer w-full md:w-auto">
-              <div className="w-14 h-14 bg-cyan-400 rounded-2xl flex items-center justify-center text-[#0A192F] group-hover:rotate-12 transition-transform">
-                <Mail className="w-7 h-7" />
+            <div className="p-6 bg-white/5 backdrop-blur-xl rounded-[2rem] border border-white/10 flex items-center space-x-5 shadow-2xl group hover:bg-white/10 transition-all cursor-pointer w-full md:w-auto">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-cyan-400 rounded-2xl flex items-center justify-center text-[#0A192F] group-hover:rotate-12 transition-transform">
+                <Mail className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
               <div className="text-left">
                 <p className="text-cyan-400 text-xs font-black uppercase tracking-[0.2em] mb-1">

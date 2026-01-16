@@ -76,7 +76,7 @@ const internships = [
 const emailRecipient = "careers@leafclutchtech.com.np";
 const SHOW_INTERNSHIP_LIST = false;
 
-const GOOGLE_FORM_URL = "https://forms.gle/4YBqdUdRyrpTx5EF8";
+// const GOOGLE_FORM_URL = "https://forms.gle/4YBqdUdRyrpTx5EF8";
 
 export const InternshipList: React.FC = () => {
   return (
@@ -157,44 +157,62 @@ Thank you.
         )}
 
         <div className="space-y-6">
-          {internships.map((job, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="rounded-2xl border border-border bg-card p-6 shadow-sm hover:border-accent/50 transition-colors"
-            >
-              <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-primary">
-                    {job.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {job.duration} •{" "}
-                    <span className="text-accent">{job.type}</span>
-                  </p>
+          {internships.map((job, i) => {
+            const body = `Hello,
+
+I would like to apply for the ${job.title} position. Here is my information:
+
+Name: [Your Name]
+LinkedIn: [Your LinkedIn]
+GitHub: [Your GitHub]
+Resume: Please attach your resume file.
+
+Thank you.
+`;
+
+            const mailtoLink = `mailto:${emailRecipient}?subject=${encodeURIComponent(
+              `Internship Application: ${job.title}`
+            )}&body=${encodeURIComponent(body)}`;
+
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="rounded-2xl border border-border bg-card p-6 shadow-sm hover:border-accent/50 transition-colors"
+              >
+                <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-primary">
+                      {job.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {job.duration} •{" "}
+                      <span className="text-accent">{job.type}</span>
+                    </p>
+                  </div>
+                  <Button asChild>
+                    <a href={mailtoLink} target="_blank" rel="noreferrer">
+                      Apply Now
+                    </a>
+                  </Button>
                 </div>
-                <Button asChild>
-                  <a href={GOOGLE_FORM_URL} target="_blank" rel="noreferrer">
-                    Apply Now
-                  </a>
-                </Button>
-              </div>
-              <p className="text-muted-foreground mb-4">{job.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {job.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground border"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                <p className="text-muted-foreground mb-4">{job.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {job.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground border"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
         {/* <div className="mt-8 p-8 bg-white dark:bg-gray-800 rounded-3xl border border-dashed border-primary max-w-3xl mx-auto text-center">
           <p className="text-[2rem] text-gray-500 dark:text-gray-400 italic">
