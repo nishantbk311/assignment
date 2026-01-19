@@ -18,13 +18,13 @@ const careers = [
   { name: "Jobs", href: "/careers/jobs" },
   { name: "Internships", href: "/careers/internships" },
 ];
-const training = [
-  { name: "All Courses", href: "/course/all" },
-  { name: "Core Tech & Design", href: "/course/core-tech-design" },
-  { name: "Data & AI Programs", href: "/course/data-ai-programs" },
-  { name: "DSA Program", href: "/course/dsa-program" },
-  { name: "Programming Languages", href: "/course/programming-languages" },
-];
+// const training = [
+//   { name: "All Courses", href: "/course/all" },
+//   { name: "Core Tech & Design", href: "/course/core-tech-design" },
+//   { name: "Data & AI Programs", href: "/course/data-ai-programs" },
+//   { name: "DSA Program", href: "/course/dsa-program" },
+//   { name: "Programming Languages", href: "/course/programming-languages" },
+// ];
 
 const others = [
   { name: "Blog", href: "/others/blog" },
@@ -33,24 +33,24 @@ const others = [
   { name: "Contact Us", href: "/others/contact" },
 ];
 
-const services = [
-  { name: "All Services", href: "/services/all-services" },
-  { name: "Web Development", href: "/services/web-development" },
-  { name: "Mobile App Development", href: "/services/mobile-development" },
-  { name: "DevOps Solutions", href: "/services/devops" },
-  { name: "Cybersecurity", href: "/services/cybersecurity" },
-  { name: "Data Science & AI", href: "/services/data-science" },
-  { name: "Digital Marketing", href: "/services/digital-marketing" },
-];
+// const services = [
+//   { name: "All Services", href: "/services/all-services" },
+//   { name: "Web Development", href: "/services/web-development" },
+//   { name: "Mobile App Development", href: "/services/mobile-development" },
+//   { name: "DevOps Solutions", href: "/services/devops" },
+//   { name: "Cybersecurity", href: "/services/cybersecurity" },
+//   { name: "Data Science & AI", href: "/services/data-science" },
+//   { name: "Digital Marketing", href: "/services/digital-marketing" },
+// ];
 
-const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "About Us", href: "/about" },
-  { name: "Training & Internship", href: "/course", dropdown: training },
-  { name: "Services", href: "/services", dropdown: services },
-  { name: "Careers", href: "/careers", dropdown: careers },
-  { name: "Others", href: "/others", dropdown: others },
-];
+// const navLinks = [
+//   { name: "Home", href: "/" },
+//   { name: "About Us", href: "/about" },
+//   { name: "Training & Internship", href: "/course", dropdown: training },
+//   { name: "Services", href: "/services", dropdown: services },
+//   { name: "Careers", href: "/careers", dropdown: careers },
+//   { name: "Others", href: "/others", dropdown: others },
+// ];
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
