@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, 
+import {
+  Menu,
+  X,
+  ChevronDown,
   // Sun, Moon
- } from "lucide-react";
+} from "lucide-react";
 import { LuCircleUserRound } from "react-icons/lu";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../ui/button";
@@ -10,6 +13,13 @@ import { Button } from "../ui/button";
 const careers = [
   { name: "Jobs", href: "/careers/jobs" },
   { name: "Internships", href: "/careers/internships" },
+];
+const training = [
+  { name: "All Courses", href: "/course/all" },
+  { name: "Core Tech & Design", href: "/course/core-tech-design" },
+  { name: "Data & AI Programs", href: "/course/data-ai-programs" },
+  { name: "DSA Program", href: "/course/dsa-program" },
+  { name: "Programming Languages", href: "/course/programming-languages" },
 ];
 
 const others = [
@@ -32,7 +42,7 @@ const services = [
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
-  { name: "Training & Internship", href: "/training" },
+  { name: "Training & Internship", href: "/course", dropdown: training },
   { name: "Services", href: "/services", dropdown: services },
   { name: "Careers", href: "/careers", dropdown: careers },
   { name: "Others", href: "/others", dropdown: others },
@@ -130,7 +140,7 @@ export function Navbar() {
                 >
                   {link.name}
                 </Link>
-              )
+              ),
             )}
           </div>
 

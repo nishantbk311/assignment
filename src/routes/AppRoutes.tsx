@@ -15,6 +15,7 @@ import TrainingInternship from "../pages/careers/TrainingInternship";
 import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
 import InternshipDetails from "../components/parts/AboutUs/InternDetails";
+import CourseDetailPage from "../pages/CourseDetailPage";
 
 export default function AppRoutes() {
   return (
@@ -26,7 +27,8 @@ export default function AppRoutes() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/intern-details" element={<InternshipDetails />} />
           <Route path="/others/contact" element={<ContactUs />} />
-          <Route path="/training" element={<TrainingInternship />} />
+          <Route path="/course/all" element={<TrainingInternship />} />
+          <Route path="/course/:slug" element={<CourseDetailPage />} />
           <Route path="/careers/jobs" element={<Job />} />
           <Route path="/careers/internships" element={<Internship />} />
           <Route path="/others/blog" element={<Blog />} />
