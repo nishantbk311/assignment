@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   Menu,
@@ -9,6 +9,10 @@ import {
 import { LuCircleUserRound } from "react-icons/lu";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../ui/button";
+import {
+  serviceApi,
+  // type ServiceResponse,
+} from "../../services/serviceService";
 
 const careers = [
   { name: "Jobs", href: "/careers/jobs" },
@@ -52,6 +56,9 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   // const [isDark, setIsDark] = useState(false);
+  const [dynamicServices, setDynamicServices] = useState<
+    { name: string; href: string }[]
+  >([]);
 
   const location = useLocation();
 
@@ -59,6 +66,38 @@ export function Navbar() {
   //   setIsDark(!isDark);
   //   document.documentElement.classList.toggle("dark");
   // };
+
+  useEffect(() => {
+    const getNavbarData = async () => {
+      try {
+        const data = await serviceApi.getAll(); // Map the backend 'title' and 'id' to the frontend 'name' and 'href'
+        const mappedServices = data.map((s) => ({
+          name: s.title,
+          href: `/services/${s.id}`,
+        }));
+
+        // Add the "All Services" link at the start if you want to keep it
+        setDynamicServices([
+          { name: "All Services", href: "/services/all-services" },
+          ...mappedServices,
+        ]);
+      } catch (err) {
+        console.error("Failed to load navbar services:", err);
+        // Fallback: if API fails, maybe keep an empty list or some default
+      }
+    };
+
+    getNavbarData();
+  }, []);
+
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about" },
+    { name: "Training & Internship", href: "/training" },
+    { name: "Services", href: "/services", dropdown: dynamicServices }, // Used state here
+    { name: "Careers", href: "/careers", dropdown: careers },
+    { name: "Others", href: "/others", dropdown: others },
+  ];
 
   const isActive = (href: string) =>
     href === "/"
