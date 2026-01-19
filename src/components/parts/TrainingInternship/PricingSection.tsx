@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Check, User, CalendarDays } from "lucide-react";
-import { useLocation } from "react-router-dom";
-import {
-  trainingApi,
-  type TrainingResponse,
-} from "../../../services/trainingService";
+import React, { useEffect } from "react";
+import type { PricingCategory } from "./types";
+import { Check, Tag, CalendarDays } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const PricingSection: React.FC = () => {
   const location = useLocation();
@@ -162,19 +159,31 @@ const PricingSection: React.FC = () => {
                   </div>
                 </div>
 
+              <div className="grid grid-cols-2 gap-4">
+                <Link
+                  to={`/course/${cat.name
+                    .toLowerCase()
+                    .replace(/&/g, "")
+                    .replace(/[^a-z0-9]+/g, "-")
+                    .replace(/(^-|-$)/g, "")}`}
+                >
+                  <button className="w-full border-2 border-primary py-5 text-primary bg-white dark:text-white font-bold text-lg rounded-2xl hover:bg-mint hover:text-primary transition-all shadow-lg active:scale-[0.98]">
+                    View more
+                  </button>
+                </Link>
+                {/* Full Width Button */}
                 <a
-                  href="https://docs.google.com/forms/..."
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSehIqCJm6ITkjUJcu9djYG4H60Uku61Z4Wlg_naCjTLUTjqlQ/viewform?usp=sharing&ouid=102811312275506082295"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-auto"
                 >
-                  <button className="w-full py-5 bg-primary text-white font-black text-lg rounded-2xl hover:bg-mint hover:text-primary transition-all shadow-lg">
+                  <button className="w-full py-5 bg-primary text-white dark:text-white font-bold text-lg rounded-2xl hover:bg-mint hover:text-primary transition-all shadow-lg active:scale-[0.98]">
                     Enroll Now
                   </button>
                 </a>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
         <div className="mt-20 flex justify-center">

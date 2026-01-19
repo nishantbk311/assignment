@@ -3,11 +3,16 @@ import { motion } from "framer-motion";
 interface StartingProps {
   pageName: string;
   srcImage: string;
+  backgroundPosition?: React.CSSProperties["backgroundPosition"];
 }
 
 const title = "Leafclutch Technologies Pvt. Ltd.";
 
-export default function Starting({ pageName, srcImage }: StartingProps) {
+export default function Starting({
+  pageName,
+  srcImage,
+  backgroundPosition,
+}: StartingProps) {
   const heroBackground: React.CSSProperties = {
     backgroundImage: `
   linear-gradient(
@@ -16,7 +21,8 @@ export default function Starting({ pageName, srcImage }: StartingProps) {
   ),
   url(${srcImage})
 `,
-  
+    // if provided then only use, otherwise use browser default
+    ...(backgroundPosition && { backgroundPosition }),
   };
 
   return (

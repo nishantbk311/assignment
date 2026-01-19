@@ -11,7 +11,9 @@ const AboutUs: React.FC = () => {
     <div className="bg-background transition-colors duration-500">
       <Starting
         pageName="About Us"
-        srcImage="https://img.freepik.com/premium-photo/about-us-information-info-company-presentation-internet-blue-computer-keyboard_770123-7082.jpg"
+        // srcImage="https://img.freepik.com/premium-photo/about-us-information-info-company-presentation-internet-blue-computer-keyboard_770123-7082.jpg"
+        srcImage="https://img.freepik.com/free-photo/silhouette-confident-businesspeople_1098-1768.jpg"
+        backgroundPosition="center top"
       />
       <WhoWeAre />
       <AboutMission />
