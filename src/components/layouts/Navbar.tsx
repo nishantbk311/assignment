@@ -71,6 +71,7 @@ export function Navbar() {
     const getNavbarData = async () => {
       try {
         const data = await serviceApi.getAll(); // Map the backend 'title' and 'id' to the frontend 'name' and 'href'
+        console.log(data);
         const mappedServices = data.map((s) => ({
           name: s.title,
           href: `/services/${s.id}`,
