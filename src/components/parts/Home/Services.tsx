@@ -8,6 +8,7 @@ import {
   serviceApi,
   type ServiceResponse,
 } from "../../../services/serviceService";
+import CardSkeleton from "./CardSkeleton";
 
 /**
  * Helper to maintain animations based on title.
@@ -78,7 +79,7 @@ const Services: React.FC = () => {
         setLoading(true);
         // FIXED: Changed getServices() to getAll() to match the exported service name
         const data = await serviceApi.getAll();
-        
+
         // Ensure data is an array before attempting to slice
         const serviceList = Array.isArray(data) ? data : [];
         setServices(serviceList.slice(0, 6));
@@ -91,13 +92,14 @@ const Services: React.FC = () => {
     fetchHomeServices();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="py-24 text-center font-bold text-primary animate-pulse">
-        Loading Services...
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     // <div className="py-24 text-center font-bold text-primary animate-pulse">
+  //     //   Loading Services...
+  //     // </div>
+  //     <CardSkeleton length={6} />
+  //   );
+  // }
 
   return (
     <section id="services" className="section-padding bg-background relative">
@@ -123,41 +125,45 @@ const Services: React.FC = () => {
           </motion.h2>
         </motion.div>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.05 }}
-          variants={containerVariants}
-        >
-          {services.map((service) => (
-            <motion.div
-              key={service.id}
-              className="group p-10 bg-card border border-border rounded-[2.5rem] text-left hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
-              variants={fadeInUp}
-            >
-              <div className="flex items-center justify-center mb-8 group-hover:scale-105 transition-transform duration-300">
-                <RenderServiceMedia service={service} />
-              </div>
-
-              <h3 className="text-2xl font-bold mb-5 text-primary leading-tight">
-                {service.title}
-              </h3>
-
-              <p className="text-muted-foreground leading-relaxed mb-10 text-[1.1rem] flex-grow line-clamp-3">
-                {service.description}
-              </p>
-
-              <Link
-                to={`/services/${service.id}`}
-                className="inline-flex self-start items-center text-[#0EA5E9] dark:text-[#38BDF8] font-bold group/link hover:underline decoration-2 underline-offset-4"
+        {loading ? (
+          <CardSkeleton length={6} />
+        ) : (
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.05 }}
+            variants={containerVariants}
+          >
+            {services.map((service) => (
+              <motion.div
+                key={service.id}
+                className="group p-10 bg-card border border-border rounded-[2.5rem] text-left hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
+                variants={fadeInUp}
               >
-                <span className="text-[1.05rem]">Learn more</span>
-                <ArrowRight className="ml-2 w-5 h-5 inline transition-transform group-hover/link:translate-x-2" />
-              </Link>
-            </motion.div>
-          ))}
-        </motion.div>
+                <div className="flex items-center justify-center mb-8 group-hover:scale-105 transition-transform duration-300">
+                  <RenderServiceMedia service={service} />
+                </div>
+
+                <h3 className="text-2xl font-bold mb-5 text-primary leading-tight">
+                  {service.title}
+                </h3>
+
+                <p className="text-muted-foreground leading-relaxed mb-10 text-[1.1rem] flex-grow line-clamp-3">
+                  {service.description}
+                </p>
+
+                <Link
+                  to={`/services/${service.id}`}
+                  className="inline-flex self-start items-center text-[#0EA5E9] dark:text-[#38BDF8] font-bold group/link hover:underline decoration-2 underline-offset-4"
+                >
+                  <span className="text-[1.05rem]">Learn more</span>
+                  <ArrowRight className="ml-2 w-5 h-5 inline transition-transform group-hover/link:translate-x-2" />
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
         <TrainingCTA />
       </div>
     </section>
