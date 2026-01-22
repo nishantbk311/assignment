@@ -20,11 +20,11 @@ const TrainingCTA: React.FC = () => {
             </p>
           </div>
         </div>
-        <Link to="/training">
-        <button className="px-8 py-4 bg-primary text-primary-foreground font-bold rounded-xl flex items-center space-x-3 hover:opacity-90 transition-opacity whitespace-nowrap">
-          <span>Explore Programs</span>
-          <ArrowRight className="w-5 h-5" />
-        </button>
+        <Link to="/course/all">
+          <button className="px-8 py-4 bg-primary text-primary-foreground font-bold rounded-xl flex items-center space-x-3 hover:opacity-90 transition-opacity whitespace-nowrap">
+            <span>Explore Programs</span>
+            <ArrowRight className="w-5 h-5" />
+          </button>
         </Link>
       </div>
     </section>
