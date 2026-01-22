@@ -70,8 +70,22 @@ export function Footer() {
           serviceApi.getAll(),
           trainingApi.getAll(),
         ]);
-        setDynamicServices(sRes || []);
-        setDynamicTrainings(tRes || []);
+
+        const services = Array.isArray(sRes) ? [...sRes] : [];
+        const trainings = Array.isArray(tRes) ? [...tRes] : [];
+
+        services.sort(
+          (a, b) =>
+            new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
+        );
+
+        trainings.sort(
+          (a, b) =>
+            new Date(a.updated_at).getTime() - new Date(b.updated_at).getTime(),
+        );
+
+        setDynamicServices(services || []);
+        setDynamicTrainings(trainings || []);
       } catch (err) {
         console.error("Footer fetch error:", err);
       }
