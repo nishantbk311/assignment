@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Shield, Clock, Zap, Settings } from "lucide-react";
+import Spinner from "../../components/ui/Spinner";
 
 import {
   serviceApi,
@@ -93,9 +94,10 @@ export default function Services() {
   if (loading) {
     return (
       <div className="h-screen flex items-center justify-center bg-background">
-        <div className="animate-pulse text-lg font-bold text-primary">
+        {/* <div className="animate-pulse text-lg font-bold text-primary">
           Fetching service data...
-        </div>
+        </div> */}
+        <Spinner />
       </div>
     );
   }

@@ -6,20 +6,67 @@ import {
   serviceApi,
   type ServiceResponse,
 } from "../../../services/serviceService";
+import Gifs from "./Gifs";
+import ServiceCardSkeleton from "./ServiceCardSkeleton";
 
-interface LocalServiceCardProps {
-  id: string;
-  title: string;
-  description: string;
-  features: string[];
-  href: string;
-  icon: React.ReactNode;
-}
+// interface LocalServiceCardProps {
+//   id: string;
+//   title: string;
+//   description: string;
+//   features: string[];
+//   href: string;
+//   icon: React.ReactNode;
+// }
+
+const RenderServiceMedia = ({ service }: { service: ServiceResponse }) => {
+  const animations: Record<string, string> = {
+    "Web Development":
+      "https://lottie.host/2ce4fd10-cf6e-472c-84f0-d7ed4221a19c/wPbVH9oZ8u.lottie",
+    "Mobile App Development":
+      "https://lottie.host/49dbf432-a55a-4721-bd96-4b660dedbb0e/ufJQbyW1ci.lottie",
+    "DevOps Solutions":
+      "https://lottie.host/d9d80db0-2de5-4883-ad60-9187c7fd57f1/DoraQiPibU.lottie",
+    Cybersecurity:
+      "https://lottie.host/75c8b880-479b-4eb2-ab86-b6eeb1ca045d/VMO59MdVIj.lottie",
+    "Data Science & AI":
+      "https://lottie.host/dcef0e14-4941-41f4-81b2-efc5401e646f/vwF0QOlEn6.lottie",
+    "Digital Marketing":
+      "https://lottie.host/ad0b5708-d705-4737-9622-2f144060ede9/wKfV30hrDN.lottie",
+  };
+
+  const lottieSrc = animations[service.title];
+
+  // 1. Try Lottie/Gif first to keep the original "AI shine"
+  if (lottieSrc) {
+    return <Gifs src={lottieSrc} className="h-[12rem] w-full" />;
+  }
+
+  // 2. Try Backend Photo next
+  if (service.photo_url) {
+    return (
+      <div className="h-[12rem] w-full overflow-hidden rounded-2xl border border-border/50">
+        <img
+          src={service.photo_url}
+          alt={service.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+      </div>
+    );
+  }
+
+  // 3. Fallback Icon if nothing else exists
+  return (
+    <div className="h-[12rem] w-full flex items-center justify-center bg-primary/5 rounded-2xl">
+      <LayoutGrid size={64} className="text-mint/50" />
+    </div>
+  );
+};
 
 const ServiceCard: React.FC<{
-  service: LocalServiceCardProps;
+  service: ServiceResponse;
   index: number;
 }> = ({ service, index }) => {
+  // console.log(service);
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -31,9 +78,10 @@ const ServiceCard: React.FC<{
       <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2F4F7] dark:bg-slate-800/50 rounded-bl-full -z-0 opacity-50 transition-colors" />
 
       <div className="relative z-10 flex flex-col items-center">
-        <div className="w-1/2 h-[12rem] rounded-xl flex items-center justify-center text-primary dark:text-mint mb-4 ">
-          <div className="p-6 bg-mint/10 rounded-full">
-            <LayoutGrid size={48} className="text-mint" />
+        <div className="w-1/2 h-[12rem] flex items-center justify-center text-primary dark:text-mint mb-4 ">
+          <div className="p-6 bg-mint/10">
+            {/* <LayoutGrid size={48} className="text-mint" /> */}
+            <RenderServiceMedia service={service} />
           </div>
         </div>
 
@@ -46,7 +94,7 @@ const ServiceCard: React.FC<{
         </p>
 
         <div className="grid grid-cols-2 gap-x-4 gap-y-4 mb-10">
-          {service.features.slice(0, 4).map((feature, i) => (
+          {service.offerings.slice(0, 4).map((feature, i) => (
             <div
               key={i}
               className="flex items-center gap-2.5 text-sm font-medium text-slate-700 dark:text-slate-300"
@@ -59,7 +107,7 @@ const ServiceCard: React.FC<{
           ))}
         </div>
 
-        <Link to={service.href} className="w-full">
+        <Link to={service.id}>
           <button className="w-full flex items-center justify-between p-4 px-6 rounded-xl border border-mint/40 dark:border-mint/20 hover:bg-primary/10 dark:hover:bg-mint/10 transition-all group/btn">
             <span className="text-lg font-bold text-[#14b8a6] dark:text-mint">
               Learn More
@@ -77,7 +125,7 @@ const ServiceCard: React.FC<{
 };
 
 const Services: React.FC = () => {
-  const [dbServices, setDbServices] = useState<LocalServiceCardProps[]>([]);
+  const [dbServices, setDbServices] = useState<ServiceResponse[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -95,16 +143,16 @@ const Services: React.FC = () => {
             new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
         );
 
-        const mapped = sortedServices.map((s: ServiceResponse) => ({
-          id: s.id,
-          title: s.title,
-          description: s.description,
-          features: s.offerings || [], // Added fallback for offerings
-          href: `/services/${s.id}`,
-          icon: null,
-        }));
+        // const mapped = sortedServices.map((s: ServiceResponse) => ({
+        //   id: s.id,
+        //   title: s.title,
+        //   description: s.description,
+        //   features: s.offerings || [], // Added fallback for offerings
+        //   href: `/services/${s.id}`,
+        //   icon: null,
+        // }));
 
-        setDbServices(mapped);
+        setDbServices(sortedServices);
       } catch (err) {
         console.error("Failed to load services grid", err);
       } finally {
@@ -113,13 +161,6 @@ const Services: React.FC = () => {
     };
     fetchAll();
   }, []);
-
-  if (loading)
-    return (
-      <div className="py-24 text-center text-primary font-bold animate-pulse">
-        Loading services grid...
-      </div>
-    );
 
   return (
     <section
@@ -137,9 +178,13 @@ const Services: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {dbServices.map((service, index) => (
-            <ServiceCard key={service.id} service={service} index={index} />
-          ))}
+          {loading
+            ? Array.from({ length: 6 }).map((_, index) => (
+                <ServiceCardSkeleton key={index} index={index} />
+              ))
+            : dbServices.map((service, index) => (
+                <ServiceCard key={service.id} service={service} index={index} />
+              ))}
         </div>
       </div>
     </section>
