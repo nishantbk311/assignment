@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, {  useState } from 'react';
+import { motion } from 'framer-motion';
 import { 
   Download, 
-  Phone, 
-  Mail, 
-  MessageSquare, 
+  Phone,  
   CheckCircle2, 
   AlertCircle,
-  ExternalLink,
-  Trash2,
   Send
 } from 'lucide-react';
 import { FaWhatsapp } from "react-icons/fa";
