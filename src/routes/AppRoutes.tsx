@@ -16,7 +16,6 @@ import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
 import InternshipDetails from "../components/parts/AboutUs/InternDetails";
 import CourseDetailPage from "../pages/CourseDetailPage";
-import StudentDetails from "../components/parts/AboutUs/StudentDetails";
 import MentorDetails from "../components/parts/AboutUs/MentorDetails";
 import Form from "../pages/form/form";
 
@@ -30,7 +29,6 @@ export default function AppRoutes() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/intern-details" element={<InternshipDetails />} />
           <Route path="/mentor-details" element={<MentorDetails />} />
-          <Route path="/student-details" element={<StudentDetails />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/course/all" element={<TrainingInternship />} />
           <Route path="/course/form" element={<Form />} />

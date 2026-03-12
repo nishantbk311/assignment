@@ -152,12 +152,6 @@ const AboutTeam: React.FC = () => {
     </button>
   </Link>
 
-  <Link to="/student-details">
-    <button className="w-full h-16 bg-primary text-white font-bold rounded-full hover:scale-105 transition-all flex items-center justify-center gap-3 uppercase tracking-[0.2em] text-base">
-      <span>Our Students</span>
-      <ArrowRight className="w-5 h-5" />
-    </button>
-  </Link>
 </motion.div>
     </section>
   );
